@@ -9,7 +9,7 @@ class User {
     public $birthdate;
     public $address;
     public $city;
-    public $payment_methods = [];
+    public $payment_methods;
 
     function __construct($_name, $_surname, $_birthdate, $_address, $_city, $_payment_methods = []) {
 
