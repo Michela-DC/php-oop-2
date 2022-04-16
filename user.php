@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__. '/credit_card.php';
+require_once __DIR__. '/credit_card.php';
 
 class User {
 
@@ -23,7 +23,7 @@ class User {
     }
 
     public function addCreditCard($card_number, $expiration_date, $cvv) {
-       array_push($this->payment_methods, new Credit_Card($card_number, $expiration_date, $cvv));
+       array_push($this->payment_methods, new CreditCard($card_number, $expiration_date, $cvv));
     }
 
 }

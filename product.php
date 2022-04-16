@@ -6,7 +6,7 @@ class Product {
     public $type;
     public $species;
     public $brand;
-    private $price;
+    public $price;
 
     function __construct($_category, $_type, $_species, $_brand, $_price){
         $this->category = $_category;

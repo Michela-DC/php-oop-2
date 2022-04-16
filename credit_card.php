@@ -1,6 +1,6 @@
 <?php
 
-class Credit_Card {
+class CreditCard {
 
     private $card_number;
     private $expiration_date;
@@ -14,7 +14,7 @@ class Credit_Card {
     }
 
     // Card number -------
-    
+
     public function setCardNumber($_card_number) {
 
         if(is_numeric($_card_number)){

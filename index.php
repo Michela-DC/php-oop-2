@@ -3,8 +3,13 @@
 require_once __DIR__.'/product.php';
 require_once __DIR__.'/user.php';
 require_once __DIR__.'/credit_card.php';
+require_once __DIR__.'/cart.php';
+require_once __DIR__.'/order.php';
 
-//PRODOTTI
+
+//Prodotti -------------------
+
+echo 'PRODOTTI';
 
 $doghouse = new Product(
     'Cuccia',
@@ -27,6 +32,8 @@ var_dump($doghouse, $cat_food);
 
 // USER registrato ------------
 
+echo 'UTENTE REGISTRATO';
+
 $user1 = new User(
     'Luca',
     'Rossi',
@@ -48,3 +55,19 @@ $user1->addCreditCard(
 );
 
 var_dump($user1);
+
+
+// Carrello --------------------
+
+$cart1 = new Cart();
+
+echo 'CARELLO:';
+
+$cart1->addToCart($doghouse);
+$cart1->addToCart($cat_food);
+
+var_dump($cart1);
+
+
+
+
