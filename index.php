@@ -139,8 +139,9 @@ echo 'RICAPITOLO ORDINE UTENTE REGISTRATO:';
 $order1 = new Order();
 
 $order1->user = $user1->getFullName();
-$order1->shopping_cart = $cart1->shopping_cart;
 $order1->total = $user1->total;
+$order1->discount = $user1->discount;
+$order1->shopping_cart = $cart1->shopping_cart;
 
 var_dump($order1);
 
@@ -149,8 +150,10 @@ echo 'RICAPITOLO ORDINE UTENTE NON REGISTRATO:';
 $order2 = new Order();
 
 $order2->user = $user2->getFullName();
-$order2->shopping_cart = $cart2->shopping_cart;
 $order2->total = $user2->total;
+$order2->discount = $user2->discount;
+$order2->shopping_cart = $cart2->shopping_cart;
+
 
 var_dump($order2);
 

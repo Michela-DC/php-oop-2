@@ -40,10 +40,12 @@ trait User {
 
             $discount = ($price * $percentage) / 100;
             $price = $price - $discount;
-
+            $price = number_format($price, 2);
+            
         }
 
-        return $price = number_format($price, 2);;
+        return $price = floatval($price); 
+        //number_format mi ritorna una stringa quindi uso floatval per farlo diventare un float
     }
 
     public function appliedDiscount($price) {
@@ -51,8 +53,9 @@ trait User {
         $discount = 0;
 
         $discount = ($price * $percentage) / 100;
+        $discount = number_format($discount, 2);
 
-        return number_format($discount, 2);;
+        return $discount = floatval($discount); 
 
     }
     
