@@ -27,6 +27,14 @@ $cat_food = new Product(
     4.99
 );
 
+$guineaPig_food = new Product(
+    'Cibo',
+    'Fieno',
+    'Porcellino d\'india',
+    'Hey Hay',
+    3.75
+);
+
 var_dump($doghouse, $cat_food);
 
 
@@ -59,14 +67,30 @@ var_dump($user1);
 
 // Carrello --------------------
 
-$cart1 = new Cart();
-
 echo 'CARELLO:';
+
+$cart1 = new Cart();
 
 $cart1->addToCart($doghouse);
 $cart1->addToCart($cat_food);
+$cart1->addToCart($guineaPig_food);
 
 var_dump($cart1);
+
+// Ordine ----------------------
+
+echo 'ORDINE:';
+
+$order1 = new Order();
+
+$order1->addToCart($doghouse);
+$order1->addToCart($cat_food);
+$order1->addToCart($guineaPig_food);
+$order1->total = $order1->totalPrice($cart1);
+
+var_dump($order1);
+
+echo 'Totale ordine: € '. $order1->total;
 
 
 
