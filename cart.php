@@ -12,6 +12,7 @@ class Cart {
 
     public function addToCart ($product) {
         array_push($this->shopping_cart, $product);
+        // oppure $this->shopping_cart[] = $product;
     }
 
 }
