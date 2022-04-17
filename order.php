@@ -2,10 +2,11 @@
 
 
 require_once __DIR__. '/cart.php';
-require_once __DIR__. '/product.php';
+require_once __DIR__.'/registered.php';
+require_once __DIR__.'/guest.php';
 
 class Order extends Cart {
-
+    
     public $total;
 
     function __construct ($_shopping_cart = [], $_total = 0) {
@@ -15,14 +16,15 @@ class Order extends Cart {
 
     }
 
-    public function totalPrice ($_shopping_cart) {
+    public function totalPrice ($order) {
         $sum = 0;
 
-        foreach($_shopping_cart as $item) {
-            
-            foreach($item as $el){
+        foreach($order as $item) {
 
-                $sum = $sum + $el->price; 
+            if ($item !== 0){
+                foreach($item as $el){
+                    $sum = $sum + $el->price; 
+                }
             }
         }
 
