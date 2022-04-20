@@ -66,26 +66,28 @@ echo 'UTENTE REGISTRATO';
 $user1 = new Registered(
     'Marta',
     'Bianchi',
-    '18/06/1990',
     'marta.bianchi@gmail.com',
     'Via Verdi n. 12 - Bologna',
 );
 
-$user1->addCreditCard(
+$user1_card1 = new CreditCard (
     12345678910,
     '04/24',
     987
-); 
+);
 
-$user1->addCreditCard(
+$user1_card2 = new CreditCard (
     10987654321,
     '05/25',
     345
 );
 
+$user1->addCreditCard($user1_card1);
+$user1->addCreditCard($user1_card2);
 $user1->cart = $cart1;
-$user1->total = $user1->totalPrice($cart1);
-$user1->discount = $user1->appliedDiscount($user1->total);
+$user1->total = $user1->discountedPrice($cart1);
+$user1->discount_applied = $user1->discountApplied($cart1, $user1->total);
+$user1->setPassword('MB1890!');
 
 var_dump($user1);
 
@@ -109,23 +111,24 @@ echo 'UTENTE NON REGISTRATO';
 $user2 = new Guest(
     'Luca',
     'Rossi',
-    '15/04/1992',
     'luca.rossi@gmail.com',
     'Via Emilia n. 5 - Milano',
 );
 
-$user2->addCreditCard(
+$user2_card1 = new CreditCard (
     10987654321,
     '07/25',
     234
-); 
+);
 
-$user2->addCreditCard(
+$user2_card2 = new CreditCard(
     10987654321,
     '09/27',
     890
-);
+); 
 
+$user2->addCreditCard($user2_card1);
+$user2->addCreditCard($user2_card2);
 $user2->cart = $cart2;
 $user2->total = $user2->totalPrice($cart2);
 
@@ -140,10 +143,11 @@ $order1 = new Order();
 
 $order1->user = $user1->getFullName();
 $order1->total = $user1->total;
-$order1->discount = $user1->discount;
+$order1->discount = $user1->discount_applied;
 $order1->shopping_cart = $cart1->shopping_cart;
 
 var_dump($order1);
+
 
 echo 'RICAPITOLO ORDINE UTENTE NON REGISTRATO:';
 
@@ -151,9 +155,8 @@ $order2 = new Order();
 
 $order2->user = $user2->getFullName();
 $order2->total = $user2->total;
-$order2->discount = $user2->discount;
+$order2->discount = $user2->discount_applied;
 $order2->shopping_cart = $cart2->shopping_cart;
-
 
 var_dump($order2);
 
